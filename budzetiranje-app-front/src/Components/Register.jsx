@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
-import axios from 'axios';
+import axios from '../axios';
+
 import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
@@ -19,23 +20,28 @@ const Register = () => {
     setUserData(newUserData);
   }
 
-  function handleRegister(e) {
+  const handleRegister = async (e) => {
     e.preventDefault();
-    //Moramo ovo da uradimo jer postoje neke default stvari koje forma radi,
-    //kao sto je refresh stranice, to nama ne odgovara
-    //handleLogin je na onSubmit-u pa zato
 
-    axios
-      .post('/api/register', userData)
-      .then((res) => {
-        console.log(res.data);
-        navigate('/login'); //Nakon registrovanja nas salje na login stranicu
-      })
-      .catch((err) => {
-        console.log('Doslo je do greske');
-        console.log(err);
-      });
-  }
+    try {
+      // Step 1: Get CSRF cookie
+      await axios.get('/sanctum/csrf-cookie');
+
+      // Step 2: Register the user
+      const res = await axios.post('/api/register', userData);
+
+      console.log('Registered successfully:', res.data);
+
+      // Step 3: Navigate to login page
+      navigate('/login');
+    } catch (err) {
+      console.error(
+        'Registration failed:',
+        err.response?.status,
+        err.response?.data
+      );
+    }
+  };
 
   return (
     <div>
