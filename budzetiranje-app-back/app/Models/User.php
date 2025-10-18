@@ -47,7 +47,20 @@ class User extends Authenticatable
         ];
     }
 
-    public function posts(){
-        return $this->hasMany(Post::class);
+
+    public function paidExpenses(){
+        return $this->hasMany(Expense::class, 'user_id');
+    }
+
+    public function owedExpenses(){
+    return $this->belongsToMany(Expense::class)
+                ->withPivot('amount_owed')
+                ->withTimestamps();
+    }
+
+    public function expenses(){
+        return $this->hasMany(Expense::class)
+                    ->withPivot('amount_owed')
+                    ->withTimestamps();
     }
 }
