@@ -1,8 +1,12 @@
 import React from 'react';
 import './OneFriend.css';
 
-const OneFriend = () => {
-  return <div>OneFriend</div>;
+const OneFriend = ({ friend }) => {
+  return (
+    <div>
+      {friend.name} : {friend.email}
+    </div>
+  );
 };
 
 export default OneFriend;
