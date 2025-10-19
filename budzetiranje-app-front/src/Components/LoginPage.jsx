@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const LoginPage = () => {
+const LoginPage = ({ addToken }) => {
   //useState hook koji je predstavljen kao objekat
   const [userData, setUserData] = useState({
     email: '',
@@ -31,6 +31,7 @@ const LoginPage = () => {
         console.log(res.data);
         if (res.data.success === true) {
           window.sessionStorage.setItem('auth_token', res.data.access_token);
+          addToken(res.data.access_token);
           //Unutar application dela mozemo da vidimo local storage
 
           navigate('/');
