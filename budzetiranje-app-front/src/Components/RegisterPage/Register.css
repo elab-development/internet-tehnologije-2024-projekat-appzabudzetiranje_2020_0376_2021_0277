@@ -1,0 +1,14 @@
+.register-container {
+  height: 100%;
+  background-color: white;
+  max-height: 600px;
+  max-width: 400px;
+  height: 55vh;
+  width: 50vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: 1px solid #043915;
+  border-radius: 20px;
+}
