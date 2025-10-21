@@ -1,12 +1,11 @@
 <?php
 
-use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PostTestController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\ExpenseController;
+use App\Http\Controllers\CategoryController;
 
 Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return $request->user();
@@ -17,6 +16,8 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 // Route::get('posts/{id}', [PostTestController::class, 'show']);
 // Route::get('posts', [PostTestController::class, 'index']);
 Route::get('/users', [UserController::class, 'index']);
+Route::get('/categories', [CategoryController::class, 'index'])->middleware('auth:sanctum');
+Route::get('/expenses', [ExpenseController::class, 'index']);
 // Route::resource('posts', PostTestController::class);
 
 Route::post('/register', [AuthController::class, 'register']);

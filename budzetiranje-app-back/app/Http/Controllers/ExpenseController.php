@@ -19,7 +19,7 @@ class ExpenseController extends Controller
         DB::beginTransaction();
 
         try {
-            // 1. Create the main expense record
+            //Create the main expense record
             $expense = Expense::create($request->only([
                 'amount',
                 'description',
@@ -27,7 +27,7 @@ class ExpenseController extends Controller
                 'category_id'
             ]));
 
-            // 2. Prepare the pivot data array for syncing
+            //Prepare the pivot data array for syncing
             $pivotData = [];
             foreach ($request->debtors as $debtor) {
                 // The key is the user_id, and the value is an array of pivot column data
@@ -36,7 +36,7 @@ class ExpenseController extends Controller
                 ];
             }
 
-            // 3. Attach the debtors and their owed amounts to the expense
+            // Attach the debtors and their owed amounts to the expense
             // We use attach here as it is a new record, and we want explicit control.
             // The Expense model's users' relationship is used here.
             $expense->users()->attach($pivotData);
@@ -59,5 +59,9 @@ class ExpenseController extends Controller
                 'error' => $e->getMessage()
             ], 500);
         }
+    }
+
+    public function index(){
+        return Expense::with('users')->get();
     }
 }

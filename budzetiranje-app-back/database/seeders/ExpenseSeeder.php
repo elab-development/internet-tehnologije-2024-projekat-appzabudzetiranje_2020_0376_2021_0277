@@ -18,20 +18,23 @@ class ExpenseSeeder extends Seeder
         Expense::create([
             'description' => 'Bek akiba sa drugarima',
             'category_id' => 1,
-            'user_id' => 1
+            'user_id' => 1,
+            'amount_payed'=>7000
         ]);
 
         Expense::create([
             'description' => 'Hrana u burito madreu',
             'category_id' => 2,
-            'user_id' => 3
+            'user_id' => 3,
+            'amount_payed'=>2500
         ]);
        
 
         Expense::create([
             'description' => 'Voznja do Novog Sada',
             'category_id' => 3,
-            'user_id' => 2
+            'user_id' => 2,
+            'amount_payed'=>4400
         ]);
        
     }
