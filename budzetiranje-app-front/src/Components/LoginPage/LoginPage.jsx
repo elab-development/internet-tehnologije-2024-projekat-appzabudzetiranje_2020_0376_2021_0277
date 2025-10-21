@@ -35,7 +35,7 @@ const LoginPage = ({ addToken }) => {
           addToken(res.data.access_token);
           //Unutar application dela mozemo da vidimo local storage
 
-          navigate('/');
+          navigate('/home');
         }
       })
       .catch((err) => {
