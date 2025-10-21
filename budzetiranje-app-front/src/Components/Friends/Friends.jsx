@@ -18,8 +18,8 @@ const Friends = () => {
   }, []);
 
   return (
-    <div>
-      Ovo su moji frendovi:
+    <div className="friends-container">
+      <h1>These are my friends:</h1>
       {friends.map((friend) => (
         <OneFriend friend={friend} key={friend.id} />
       ))}

@@ -6,6 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>There's just no tiiimeee just noo timeee...</h1>
+    <h1>The server is running 🏃 ... </h1>
 </body>
 </html>

@@ -29,16 +29,17 @@ function NavBar({ token }) {
   return (
     <>
       <div className="navBar">
-        <a href="/friends">My friends</a>
+        <a href="/home/friends">My friends</a>
+        <a href="/home/expenses">Expenses</a>
+        <a href="/home/my-debts">My debts</a>
         {/* Pre je stajao ovaj kod window.sessionStorage.getItem('auth_token') == null */}
         {token == null ? (
           <a href="/login">Login</a>
         ) : (
-          <a href="/" onClick={handleLogout}>
+          <a href="/home" onClick={handleLogout}>
             Logout
           </a>
         )}
-        <a href="/">My debts</a>
       </div>
       <Outlet />
     </>

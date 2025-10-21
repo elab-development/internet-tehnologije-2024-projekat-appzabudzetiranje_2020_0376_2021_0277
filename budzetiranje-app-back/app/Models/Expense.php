@@ -12,7 +12,7 @@ class Expense extends Model
     protected $fillable = [
         'amount',
         'description',
-        'payer_user_id',
+        'user_id',
         'category_id'
     ];
     public function payer(){
