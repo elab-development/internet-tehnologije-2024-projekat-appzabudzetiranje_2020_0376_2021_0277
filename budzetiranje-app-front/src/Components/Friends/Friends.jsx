@@ -17,6 +17,8 @@ const Friends = () => {
       });
   }, []);
 
+  console.log(friends);
+
   return (
     <div className="friends-container">
       <h1>These are my friends:</h1>

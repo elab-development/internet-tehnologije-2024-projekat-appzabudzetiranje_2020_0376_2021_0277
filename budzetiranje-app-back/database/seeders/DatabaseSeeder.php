@@ -27,5 +27,9 @@ class DatabaseSeeder extends Seeder
             ExpenseSeeder::class,
         ]);
 
+        $this->call([
+            ExpenseUserSeeder::class,
+        ]);
+
     }
 }

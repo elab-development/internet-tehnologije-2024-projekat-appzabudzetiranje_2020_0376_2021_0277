@@ -6,8 +6,9 @@ import LoginPage from './Components/LoginPage/LoginPage';
 import Register from './Components/RegisterPage/Register';
 import { useState } from 'react';
 import Friends from './Components/Friends/Friends';
-import Expenses from './Components/Expenses/Expenses';
+import AddExpenses from './Components/AddExpenses/AddExpenses';
 import MyDebts from './Components/MyDebts/MyDebts';
+import Expenses from './Components/Expenses/Expenses';
 
 function App() {
   const [token, setToken] = useState();
@@ -27,6 +28,7 @@ function App() {
         <Route path="/home" element={<NavBar token={token}></NavBar>}>
           <Route path="friends" element={<Friends></Friends>} />
           <Route path="expenses" element={<Expenses></Expenses>} />
+          <Route path="add-expenses" element={<AddExpenses></AddExpenses>} />
           <Route path="my-debts" element={<MyDebts></MyDebts>} />
         </Route>
       </Routes>
