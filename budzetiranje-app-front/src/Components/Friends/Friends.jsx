@@ -17,13 +17,43 @@ const Friends = () => {
       });
   }, []);
 
+  const handleDelete = async (id) => {
+    if (!window.confirm('Are you sure you want to delete this friend?')) return;
+
+    try {
+      await axios.delete(`/api/users/${id}`);
+      setFriends((prev) => prev.filter((f) => f.id !== id));
+    } catch (err) {
+      console.error('Error deleting user:', err);
+    }
+  };
+
+  const handleEdit = async (id, oldName) => {
+    const newName = prompt('Enter new name:', oldName);
+    if (!newName || newName.trim() === '') return;
+
+    try {
+      await axios.put(`/api/users/${id}`, { name: newName });
+      setFriends((prev) =>
+        prev.map((f) => (f.id === id ? { ...f, name: newName } : f))
+      );
+    } catch (err) {
+      console.error('Error updating user:', err);
+    }
+  };
+
   console.log(friends);
 
   return (
     <div className="friends-container">
-      <h1>These are my friends:</h1>
+      <h1>Ovo su moji frendovi:</h1>
       {friends.map((friend) => (
-        <OneFriend friend={friend} key={friend.id} />
+        <OneFriend
+          friend={friend}
+          key={friend.id}
+          onDelete={handleDelete}
+          onEdit={handleEdit}
+        />
       ))}
     </div>
   );
