@@ -14,7 +14,7 @@ import {
 // --- CONFIGURATION CONSTANTS ---
 // In a real app, these would likely be environment variables
 const MOCK_TOKEN = sessionStorage.getItem('auth_token'); // Placeholder: Replace with actual token from Auth state
-const API_BASE_URL = 'http://127.0.0.1:8000/api'; // Base path for Laravel API endpoints
+const API_BASE_URL = 'http://localhost:8000/api'; // Base path for Laravel API endpoints
 const EXPENSES_API_URL = `${API_BASE_URL}/expenses`;
 const USERS_API_URL = `${API_BASE_URL}/users`;
 const CATEGORIES_API_URL = `${API_BASE_URL}/categories`;
@@ -248,12 +248,14 @@ const ExpenseSplitterForm = () => {
     try {
       setSubmissionMessage({ type: 'info', text: 'Submitting expense...' });
 
+      await axios.get('http://localhost:8000/sanctum/csrf-cookie', { withCredentials: true });
       // 1. CONVERT TO AXIOS.POST FOR RELIABILITY
       const response = await axios.post(EXPENSES_API_URL, payload, {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${MOCK_TOKEN}`,
         },
+        withCredentials: true,
       });
 
       // Axios automatically checks for successful status codes (2xx)
