@@ -28,19 +28,18 @@ const Friends = () => {
     }
   };
 
-  const handleEdit = async (id, oldName) => {
-    const newName = prompt('Enter new name:', oldName);
-    if (!newName || newName.trim() === '') return;
+  const handleEdit = async (id, newName) => {
+  if (!newName || newName.trim() === '') return;
 
-    try {
-      await axios.put(`/api/users/${id}`, { name: newName });
-      setFriends((prev) =>
-        prev.map((f) => (f.id === id ? { ...f, name: newName } : f))
-      );
-    } catch (err) {
-      console.error('Error updating user:', err);
-    }
-  };
+  try {
+    await axios.put(`/api/users/${id}`, { name: newName });
+    setFriends((prev) =>
+      prev.map((f) => (f.id === id ? { ...f, name: newName } : f))
+    );
+  } catch (err) {
+    console.error('Error updating user:', err);
+  }
+};
 
   console.log(friends);
 
