@@ -19,14 +19,14 @@ class ExpenseSeeder extends Seeder
             'description' => 'Bek akiba sa drugarima',
             'category_id' => 1,
             'user_id' => 1,
-            'amount_payed'=>7000
+            'amount'=>7000
         ]);
 
         Expense::create([
             'description' => 'Hrana u burito madreu',
             'category_id' => 2,
             'user_id' => 3,
-            'amount_payed'=>2500
+            'amount'=>2500
         ]);
        
 
@@ -34,7 +34,7 @@ class ExpenseSeeder extends Seeder
             'description' => 'Voznja do Novog Sada',
             'category_id' => 3,
             'user_id' => 2,
-            'amount_payed'=>4400
+            'amount'=>4400
         ]);
        
     }
