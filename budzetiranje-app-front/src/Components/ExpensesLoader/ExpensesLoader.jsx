@@ -84,7 +84,7 @@ const ExpensesLoader = () => {
                 {expense.description || `Expense #${expense.id}`}
               </h3>
               <span className="text-2xl font-bold text-gray-900">
-                {parseFloat(expense.amount_payed).toFixed(2)}rsd
+                {parseFloat(expense.amount).toFixed(2)}rsd
               </span>
             </div>
 
